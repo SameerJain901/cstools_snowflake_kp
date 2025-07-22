@@ -58,5 +58,5 @@ jobs:
         run: >-
           cs_tools tools
           searchable metadata
-          --syncer 'snowflake://${{ env.DECLARATIVE_SYNCER_SYNTAX }}&load_strategy=TRUNCATE&private_key_path=private-key.p8'
+          --syncer 'snowflake://account_name=${{ secrets.SNOWFLAKE_ACCOUNT }}&username=${{ secrets.SNOWFLAKE_USERNAME }}&secret=${{ secrets.SNOWFLAKE_PASSWORD }}&warehouse=${{ secrets.SNOWFLAKE_WAREHOUSE }}&role=${{ secrets.SNOWFLAKE_ROLE }}&database=${{ secrets.SNOWFLAKE_DATABASE }}&schema=${{ secrets.SNOWFLAKE_SCHEMA }}&authentication=key-pair&load_strategy=TRUNCATE&private_key_path=private-key.p8'
           --config ENV: 
