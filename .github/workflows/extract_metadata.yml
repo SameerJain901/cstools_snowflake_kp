@@ -25,6 +25,7 @@ jobs:
       CS_TOOLS_THOUGHTSPOT__USERNAME: ${{ secrets.THOUGHTSPOT_USERNAME }}
       CS_TOOLS_THOUGHTSPOT__PASSWORD: ${{ secrets.THOUGHTSPOT_PASSWORD }}
       P8_KEY_PATH: private-key.p8
+      ORG: ${{ secrets.THOUGHTSPOT_ORG }}
       
       
     
@@ -60,5 +61,5 @@ jobs:
       # THE CLI OPTION  --config ENV:  TELLS CS TOOLS TO PULL THE INFORMATION FROM ENVIRONMENT VARIABLES.
       - name: Refresh Metadata from ThoughtSpot
         run: >-
-          cs_tools tools searchable metadata --syncer 'snowflake://${{ env.DECLARATIVE_SYNCER_SYNTAX }}&load_strategy=TRUNCATE' 
+          cs_tools tools searchable metadata --syncer 'snowflake://${{ env.DECLARATIVE_SYNCER_SYNTAX }}&load_strategy=TRUNCATE' --org "${{ env.ORG }}"
           --config ENV: 
